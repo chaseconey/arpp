@@ -24,6 +24,9 @@
     - { path: '/home/pi/.bashrc', owner: "{{ user }}", group: "{{ user }}" }
     - { path: '/root/.bashrc', owner: 'root', group: 'root' }
 
+- name: Add authorized users to all pis
+  template: src=authorized_keys.j2 dest=/root/.ssh/authorized_keys
+
 # Install vnc
 - include: install_vnc.yml
 
