@@ -21,4 +21,5 @@ Configure hosts in hosts file
         bensible
 
 Run
+
         ansible-playbook -i hosts site.yml
