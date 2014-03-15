@@ -1,0 +1,7 @@
+---
+
+- name: Install vncserver
+  apt: name=x11vnc state=installed
+
+# - name: Add vnc configuration
+#   copy: src= dest=

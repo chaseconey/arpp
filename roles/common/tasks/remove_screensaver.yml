@@ -1,0 +1,11 @@
+---
+
+- name: Install x11 server utilities
+  apt: name=x11-xserver-utils state=installed
+
+- name: Add xinitrc
+  template: src=.xinitrc.j2 dest={{ item.path }}
+            owner={{ item.owner }} group={{ item.group }}
+  with_items:
+    - { path: '/home/pi/.xinitrc', owner: "{{ user }}", group: "{{ user }}" }
+    - { path: '/root/.xinitrc', owner: 'root', group: 'root' }

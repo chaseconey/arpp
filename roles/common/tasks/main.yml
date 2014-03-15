@@ -6,10 +6,29 @@
   with_items:
    - vim
    - ack-grep
-   - x11vnc
 
 - name: Setup motd
   template: src=motd.j2 dest=/etc/motd
+
+- name: Add vimrc
+  template: src=.vimrc.j2 dest={{ item.path }}
+            owner={{ item.owner }} group={{ item.group }}
+  with_items:
+    - { path: '/home/pi/.vimrc', owner: "{{ user }}", group: "{{ user }}" }
+    - { path: '/root/.vimrc', owner: 'root', group: 'root' }
+
+- name: Add bashrc
+  template: src=.bashrc.j2 dest={{ item.path }}
+            owner={{ item.owner }} group={{ item.group }}
+  with_items:
+    - { path: '/home/pi/.bashrc', owner: "{{ user }}", group: "{{ user }}" }
+    - { path: '/root/.bashrc', owner: 'root', group: 'root' }
+
+# Install vnc
+- include: install_vnc.yml
+
+# Turn off screen saver
+- include: remove_screensaver.yml
 
 # - name: Install ntp
 #   yum: name=ntp state=present
