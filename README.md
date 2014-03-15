@@ -16,11 +16,10 @@ These playbooks require Ansible 1.2.
 
 Configure hosts in hosts file
 
-        [webservers]
-        localhost
-
-        [dbservers]
-        bensible
+        [pis]
+        pi01
+        pi02
+        pi03
 
 Run
 
