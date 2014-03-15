@@ -1,0 +1,4 @@
+[pis]
+192.168.1.134 ansible_ssh_user=root
+
+

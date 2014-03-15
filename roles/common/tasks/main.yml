@@ -1,0 +1,30 @@
+---
+# This playbook contains common plays that will be run on all nodes.
+
+- name: Install common cli utilities
+  apt: name={{ item }} state=installed
+  with_items:
+   - vim
+   - ack-grep
+   - x11vnc
+
+- name: Setup motd
+  template: src=motd.j2 dest=/etc/motd
+
+# - name: Install ntp
+#   yum: name=ntp state=present
+#   tags: ntp
+
+# - name: Configure ntp file
+#   template: src=ntp.conf.j2 dest=/etc/ntp.conf
+#   tags: ntp
+#   notify: restart ntp
+
+# - name: Start the ntp service
+#   service: name=ntpd state=started enabled=true
+#   tags: ntp
+
+# - name: test to see if selinux is running
+#   command: getenforce
+#   register: sestatus
+#   changed_when: false
