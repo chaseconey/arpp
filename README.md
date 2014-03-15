@@ -16,11 +16,17 @@ These playbooks require Ansible 1.2.
 
 Configure hosts in hosts file
 
-        [pis]
-        pi01
-        pi02
-        pi03
+```yml
+    [pis]
+    pi01
+    pi02
+    pi03
+```
+
+Add ssh key to `roles/common/templates/authorized_keys.j2`
 
 Run
 
-        ansible-playbook -i hosts site.yml
+```bash
+    ansible-playbook -i hosts site.yml
+```
