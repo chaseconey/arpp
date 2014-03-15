@@ -1,6 +1,8 @@
 arpp
 -------------------------------------------
 
+Project status: In Progress
+
 This project is supposed to be a very simple raspberry pi remote provisioning configuration. If you have to manage more than 1 raspberry pi or provision more than one, this might be for you.
 
 
