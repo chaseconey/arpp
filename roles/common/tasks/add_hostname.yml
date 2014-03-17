@@ -1,0 +1,7 @@
+---
+
+- name: Set hostname
+  template: src=hostname.j2 dest=/etc/hostname
+
+- name: Place hostname in hosts file
+  lineinfile: dest=/etc/hosts line='127.0.1.1    {{ hostname }}'

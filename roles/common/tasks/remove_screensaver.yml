@@ -1,11 +1,11 @@
 ---
 
-- name: Install x11 server utilities
-  apt: name=x11-xserver-utils state=installed
+- name: Install xscreensaver
+  apt: name=xscreensaver state=installed
 
-- name: Add xinitrc
-  template: src=.xinitrc.j2 dest={{ item.path }}
+- name: Add xscreensaver
+  copy: src=.xscreensaver dest={{ item.path }}
             owner={{ item.owner }} group={{ item.group }}
   with_items:
-    - { path: '/home/pi/.xinitrc', owner: "{{ user }}", group: "{{ user }}" }
-    - { path: '/root/.xinitrc', owner: 'root', group: 'root' }
+    - { path: '/home/{{ user }}/.xscreensaver', owner: "{{ user }}", group: "{{ user }}" }
+    - { path: '/root/.xscreensaver', owner: 'root', group: 'root' }

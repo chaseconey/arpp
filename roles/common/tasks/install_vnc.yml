@@ -3,5 +3,15 @@
 - name: Install vncserver
   apt: name=x11vnc state=installed
 
-# - name: Add vnc configuration
-#   copy: src= dest=
+- name: Clone noVNC repository
+  git: repo=git://github.com/kanaka/noVNC
+        dest=/usr/local
+
+- name: Add noVNC initialize script
+  copy: src=noVNC dest=/etc/init.d/noVNC mode=755
+
+- name: Add noVNC launch script
+  copy: src=launch.sh dest=/usr/local/noVNC/utils/launch.sh mode=755
+
+- name: Add vnc to startup
+  lineinfile: dest=/etc/xdg/lxsession/LXDE/autostart line='@bash /etc/init.d/noVNC start'

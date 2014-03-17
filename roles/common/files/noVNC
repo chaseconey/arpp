@@ -1,0 +1,30 @@
+#!/bin/bash
+# Ryan Hartje 3-14-14 ryanh@creditcards.com
+
+case "$1" in
+
+start)
+  x11vnc -fixscreen -shared -bg -forever -nopw -display :1
+  sudo nohup /usr/local/noVNC/utils/launch.sh --vnc localhost:5900 &
+  ;;
+
+stop)
+  ps faux|grep x11vnc|egrep -v "grep"|awk '{print $2}'|while read pid; do kill -9 $pid; done;
+  echo "x11vnc stopped";
+  ps faux|grep noVNC|egrep -v "grep|init.d"|awk '{print $2}'|while read pid; do sudo kill -9 $pid; done;
+  echo "noVNC stopped.";
+  ;;
+
+restart)
+  stop
+  start
+  ;;
+
+*)
+  echo "Usage: /etc/init.d/noVNC {start|stop|restart}";
+  exit 1
+  ;;
+esac
+
+exit 0
+
