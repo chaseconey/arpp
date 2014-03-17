@@ -5,7 +5,7 @@
 
 - name: Clone noVNC repository
   git: repo=git://github.com/kanaka/noVNC
-        dest=/usr/local
+        dest=/usr/local/noVNC
 
 - name: Add noVNC initialize script
   copy: src=noVNC dest=/etc/init.d/noVNC mode=755
