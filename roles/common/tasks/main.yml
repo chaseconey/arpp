@@ -12,9 +12,13 @@
    - git
    - curl
    - build-essential
+   - unclutter
 
 - name: Setup motd
   template: src=motd.j2 dest=/etc/motd
+
+- name: Set hostname
+  template: src=hostname.j2 dest=/etc/hostname
 
 - name: Add vimrc
   template: src=.vimrc.j2 dest={{ item.path }}
@@ -32,6 +36,9 @@
 
 - name: Add authorized users to all pis
   template: src=authorized_keys.j2 dest=/root/.ssh/authorized_keys
+
+- name: Setup static ips
+  template: src=interfaces.j2 dest=/etc/network/interfaces
 
 # Install vnc
 - include: install_vnc.yml
