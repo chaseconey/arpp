@@ -28,11 +28,11 @@
   template: src=.bashrc.j2 dest={{ item.path }}
             owner={{ item.owner }} group={{ item.group }}
   with_items:
-    - { path: '/home/pi/.bashrc', owner: "{{ user }}", group: "{{ user }}" }
+    - { path: '/home/{{ user }}/.bashrc', owner: "{{ user }}", group: "{{ user }}" }
     - { path: '/root/.bashrc', owner: 'root', group: 'root' }
 
-- name: Add authorized users to all pis
-  template: src=authorized_keys.j2 dest=/root/.ssh/authorized_keys
+# Add authorized users
+- include: add_ssh_keys.yml
 
 # Install vnc
 - include: install_vnc.yml

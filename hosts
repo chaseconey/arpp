@@ -1,5 +1,5 @@
 [pis]
 10.11.100.81 hostname=devpi03 ip=10.11.100.81
 10.11.101.83 hostname=devpi04 ip=10.11.101.83
-#10.11.100.93 hostname=devpi05 ip=10.11.100.93
-#10.11.101.123 hostname=devpi06 ip=10.11.101.123
+10.11.100.93 hostname=devpi05 ip=10.11.100.93
+10.11.101.123 hostname=devpi06 ip=10.11.101.123

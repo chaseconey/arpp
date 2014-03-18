@@ -4,7 +4,7 @@
 case "$1" in
 
 start)
-  x11vnc -fixscreen -shared -bg -forever -nopw -display :1
+  x11vnc -fixscreen -shared -bg -forever -nopw -display :0
   sudo nohup /usr/local/noVNC/utils/launch.sh --vnc localhost:5900 &
   ;;
 

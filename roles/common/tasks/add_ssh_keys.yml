@@ -1,0 +1,11 @@
+---
+
+- name: Ensure .ssh is available
+  file: dest=/home/{{ user }}/.ssh state='directory'
+
+- name: Add authorized users to all pis
+  template: src=authorized_keys.j2 dest={{ item.path }}
+            owner={{ item.owner }} group={{ item.group }}
+  with_items:
+    - { path: '/home/{{ user }}/.ssh/authorized_keys', owner: "{{ user }}", group: "{{ user }}" }
+    - { path: '/root/.ssh/authorized_keys', owner: 'root', group: 'root' }
