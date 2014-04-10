@@ -25,6 +25,13 @@ Configure hosts in hosts file
 
 Add ssh key to `roles/common/templates/authorized_keys.j2`
 
+Make sure that the managed pi has the package `python-apt` before running ansible against it.
+
+```bash
+  sudo apt-get install python-apt
+```
+
+
 Run
 
 ```bash
