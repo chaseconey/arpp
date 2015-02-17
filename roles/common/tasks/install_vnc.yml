@@ -3,9 +3,13 @@
 - name: Install vncserver
   apt: name=x11vnc state=installed
 
+- name: Add github to known hosts
+  template: src=known_hosts.j2 dest=/etc/ssh/ssh_known_hosts
+
 - name: Clone noVNC repository
-  git: repo=git://github.com/kanaka/noVNC
+  git: repo=https://github.com/kanaka/noVNC.git
         dest=/usr/local/noVNC
+        accept_hostkey=true
 
 - name: Add noVNC initialize script
   copy: src=noVNC dest=/etc/init.d/noVNC mode=755

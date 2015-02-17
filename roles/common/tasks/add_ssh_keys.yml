@@ -1,7 +1,10 @@
 ---
 
 - name: Ensure .ssh is available
-  file: dest=/home/{{ user }}/.ssh state='directory'
+  file: dest={{ item}} state='directory'
+  with_items:
+    - /home/{{ user }}/.ssh
+    - /root/.ssh
 
 - name: Add authorized users to all pis
   template: src=authorized_keys.j2 dest={{ item.path }}
